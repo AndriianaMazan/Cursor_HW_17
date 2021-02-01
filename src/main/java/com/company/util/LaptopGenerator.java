@@ -5,14 +5,13 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class LaptopGenerator {
     private final Random random = new Random();
 
-    public Laptop getLaptop(){
+    public Laptop getLaptop() {
         Laptop laptop = new Laptop();
         laptop.setModel(getModel());
         laptop.setBrand(getBrand());
@@ -26,7 +25,7 @@ public class LaptopGenerator {
         return laptop;
     }
 
-    private String getModel(){
+    private String getModel() {
         String[] laptopModels = {
                 "ROG Strix G15 G512LI-HN094",
                 "ZenBook 14 UM431DA-AM005",
@@ -43,7 +42,7 @@ public class LaptopGenerator {
         return laptopModels[random.nextInt(laptopModels.length)];
     }
 
-    private String getBrand(){
+    private String getBrand() {
         String[] laptopBrand = {
                 "Asus",
                 "Acer",
@@ -55,7 +54,7 @@ public class LaptopGenerator {
         return laptopBrand[random.nextInt(laptopBrand.length)];
     }
 
-    private String getProcessor(){
+    private String getProcessor() {
         String[] laptopCPU = {
                 "Intel® Core™ i5",
                 "Intel® Core™ i7",
@@ -65,27 +64,27 @@ public class LaptopGenerator {
         return laptopCPU[random.nextInt(laptopCPU.length)];
     }
 
-    private int getRAM(){
+    private int getRAM() {
         int[] laptopRAM = {16, 32, 64, 128, 256};
 
         return laptopRAM[random.nextInt(laptopRAM.length)];
     }
 
-    private boolean isUsed(){
+    private boolean isUsed() {
         return random.nextBoolean();
     }
 
-    private String getCase(){
+    private String getCase() {
         String[] laptopCase = {"Metal", "Plastic"};
 
         return laptopCase[random.nextInt(laptopCase.length)];
     }
 
-    private float getPrice(){
+    private float getPrice() {
         return (float) random.nextInt(25_000) + 15_000;
     }
 
-    private LocalDate getReleaseDate(){
+    private LocalDate getReleaseDate() {
         long minDay = LocalDate.of(2016, 1, 1).toEpochDay();
         long maxDay = LocalDate.of(2020, 12, 31).toEpochDay();
         long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
